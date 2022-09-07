@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Ord spill</string>
+	<string name="progressTitle">Fremdrift</string>
+	<string name="selectCharTitle">Finn et ord!</string>
+	<string name="solutionText">Din løsning</string>
+	<string name="wordFoundText">ORD FUNNET</string>
+	<string name="answerText">SVAR</string>
+		<string name="resetText">RESET</string>
+	<string name="gobackText">ANGRE</string>
+	<string name="newgameText">NYTT SPILL</string>
+	<string name="solutionsFoundText">LØSNINGER FUNNET</string>
+	<string name="allSolutuionsText">ALLE LØSNINGER</string>
+</resources>

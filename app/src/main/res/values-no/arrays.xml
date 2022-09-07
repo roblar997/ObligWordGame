@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<resources> 
+ <string-array name="solutions"> 
+     <item>SJOKOLADE</item>
+     <item>SPISE</item>
+     <item>MORRO</item>
+     <item>PROBLEM</item>
+     <item>TAKK</item>
+  <item>HVORFOR</item>
+  <item>HVORDAN</item>
+  <item>RIPS</item>
+   <item>SLAG</item>
+ <item>HARPUN</item>
+ </string-array> 
+</resources> 
+

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Word game</string>
+	<string name="progressTitle">Progress</string>
+	    <string name="selectCharTitle">Find a word!</string>
+	<string  name="solutionText">Your solution</string>
+	<string name="wordFoundText">WORDS FOUND</string>
+	<string name="answerText">ANSWER</string>
+	<string name="resetText">RESET</string>
+	<string name="gobackText">UNDO</string>
+	<string name="newgameText">NEW GAME</string>
+	<string name="solutionsFoundText">SOLUTIONS FOUND</string>
+	<string name="allSolutuionsText">ALL SOLUTIONS</string>
+</resources>

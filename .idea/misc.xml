@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.207" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout-land/activity_allsolutions.xml" value="0.15520282186948853" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout-land/activity_goal.xml" value="0.18298059964726632" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout-land/activity_main.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout-land/activity_wordsfound.xml" value="0.1" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout-land/landLayout.xml" value="0.11992945326278659" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout-port/activity_allsolutions.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout-port/activity_goal.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout-port/activity_main.xml" value="0.1111111111111111" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout-port/activity_wordsfound.xml" value="0.25" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout/activity_main_orientation.xml" value="0.1" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout/activity_wordsfound.xml" value="0.1" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout/landLayout.xml" value="0.1" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout/landlayout.xml" value="0.1" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/layout/portlayout.xml" value="0.1" />
+        <entry key="..\:/Users/rober/AndroidStudioProjects/ObligWordGame/app/src/main/res/menu/menu.xml" value="0.18333333333333332" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

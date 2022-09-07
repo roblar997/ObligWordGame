@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<resources>
+ <string-array name="solutions">
+     <item>ALSO</item>
+     <item>AGAIN</item>
+     <item>ANIMAL</item>
+     <item>BUILD</item>
+     <item>BACK</item>
+  <item>BEFORE</item>
+  <item>COUNTRY</item>
+  <item>DOWN</item>
+   <item>DRAW</item>
+ <item>DOOR</item>
+ </string-array>
+</resources> 
+
