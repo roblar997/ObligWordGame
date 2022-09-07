@@ -8,7 +8,7 @@
     android:backgroundTint="#000000"
     android:orientation="vertical"
     tools:context=".GoalActivity">
-// // // //
+// // //
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
