@@ -6,12 +6,13 @@
     android:layout_height="wrap_content"
     android:background="#31615D"
     android:backgroundTint="#000000"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".WordFoundActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="734dp"
+        >
 
         <LinearLayout
             android:id="@+id/viewList"
@@ -22,7 +23,7 @@
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="743dp"
-                android:layout_height="423dp"
+                android:layout_height="40dp"
                 android:text="@string/solutionsFoundText"
                 android:textColor="#4CAF50"
                 android:textSize="34sp" />

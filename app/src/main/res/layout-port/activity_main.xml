@@ -65,7 +65,7 @@
                     android:layout_marginEnd="10dp"
                     android:text="no/en"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toStartOf="@+id/button7"
+                    app:layout_constraintEnd_toStartOf="@+id/button5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

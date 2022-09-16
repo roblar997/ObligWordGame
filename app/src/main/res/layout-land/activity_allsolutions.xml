@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="#31615D"
     android:backgroundTint="#000000"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".AllSolutionsActivity">
 
     <ScrollView
@@ -22,7 +22,7 @@
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="743dp"
-                android:layout_height="423dp"
+                android:layout_height="40dp"
                 android:text="@string/allSolutuionsText"
                 android:textColor="#4CAF50"
                 android:textSize="34sp" />

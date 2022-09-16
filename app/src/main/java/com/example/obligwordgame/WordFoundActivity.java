@@ -76,7 +76,8 @@ public class WordFoundActivity extends AppCompatActivity {
             case R.id.wordsfound:
                 return true;
             case android.R.id.home:
-                finish();
+                homeIntent = new Intent(WordFoundActivity.this,MainActivity.class);
+                startActivity(homeIntent);
                 return true;
 
         }

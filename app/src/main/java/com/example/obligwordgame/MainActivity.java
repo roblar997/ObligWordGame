@@ -178,7 +178,10 @@ public class MainActivity extends AppCompatActivity {
         else if(!answer.contains(middleChar)){
             setResponse(placeholder,"Answer must contain \nmiddle character", responseType.ERROR.ordinal());
         }
-        else if(!solutions.contains(answer) && !solutionsFound.contains(answer)){
+        else if(solutionsFound.contains(answer)){
+            setResponse(placeholder,"Already found this answer", responseType.ERROR.ordinal());
+        }
+        else if(!solutions.contains(answer)){
 
             setResponse(placeholder,"Inncorrect answer", responseType.ERROR.ordinal());
         }
@@ -186,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
 
             addPoint(pointView);
             setResponse(placeholder,"Correct answer", responseType.SUCCESS.ordinal());
+
             storeAnswer(answer);
 
         }
