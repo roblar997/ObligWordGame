@@ -7,11 +7,11 @@
     android:background="#31615D"
     android:backgroundTint="#000000"
     android:orientation="vertical"
-    tools:context=".GoalActivity">
+    tools:context=".AllSolutionsActivity">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="415dp"
+        android:layout_height="734dp">
 
         <LinearLayout
             android:id="@+id/viewList"
@@ -19,21 +19,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="729dp"
-                android:layout_height="280dp"
-                android:backgroundTint="#FFFFFF"
-                android:foregroundTint="#FFFFFF"
-                app:srcCompat="@drawable/pokal" />
-
-            <Button
-                android:id="@+id/newgameButton"
+            <TextView
+                android:id="@+id/textView18"
                 android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:backgroundTint="#4CAF50"
-                android:text="NEW GAME" />
+                android:layout_height="wrap_content"
+                android:text="@string/allSolutuionsText"
+                android:textColor="#4CAF50"
+                android:textSize="34sp" />
+
+
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

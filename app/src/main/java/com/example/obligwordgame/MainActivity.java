@@ -40,9 +40,12 @@ import java.util.stream.Collectors;
 public class MainActivity extends AppCompatActivity {
     private enum responseType {SUCCESS,WARNING,ERROR,INFO}
 
+    private Resources res;
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+
 
 
     }
@@ -74,14 +77,21 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void getHint(List<String> solutions, TextView currentSolution, TextView hintText, String middleButtonChar,TextView responsText){
         String currentSolutionText = currentSolution.getText().toString();
-        List<String> possibleSuffixes = solutions.stream().filter((x)->x.startsWith(currentSolutionText) && x.contains(middleButtonChar)).map((x)->x.replaceFirst(currentSolutionText,"")).collect(Collectors.toList());
+        SharedPreferences.Editor editor = this.getSharedPreferences(this.getPackageName(), MODE_PRIVATE).edit();
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        Set<String> solutionsFound = sharedPreferences.getStringSet("solutionsFound",new HashSet<String>());
+
+        List<String> possibleSuffixes = solutions.stream().filter((x)->x.startsWith(currentSolutionText) && x.contains(middleButtonChar) && !solutionsFound.contains(x)).map((x)->x.replaceFirst(currentSolutionText,"")).collect(Collectors.toList());
+
+        String response2 = res.getString(R.string.response2);
+        String response6 = res.getString(R.string.response5);
         if(possibleSuffixes.contains(""))
             return;
         if(possibleSuffixes.isEmpty()){
-            setResponse(responsText,"No solutions starting \nwith your current input", responseType.INFO.ordinal());
+            setResponse(responsText,response6, responseType.INFO.ordinal());
             return;
         }
-        setResponse(responsText,"You have a partially \n a correct solution.", responseType.INFO.ordinal());
+        setResponse(responsText,response2, responseType.INFO.ordinal());
         Random rand = new Random();
 
         int randIndex = rand.nextInt(possibleSuffixes.size());
@@ -172,23 +182,29 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         Set<String> solutionsFound = sharedPreferences.getStringSet("solutionsFound",new HashSet<String>());
 
+        String response1 = res.getString(R.string.response1);
+        String response2 = res.getString(R.string.response2);
+        String response3 = res.getString(R.string.response3);
+        String response4 = res.getString(R.string.response4);
+        String response5 = res.getString(R.string.response5);
+
         if(answer.length() < 4){
-            setResponse(placeholder,"Each word needs at \nleast 4 characters", responseType.ERROR.ordinal());
+            setResponse(placeholder,response2, responseType.ERROR.ordinal());
         }
         else if(!answer.contains(middleChar)){
-            setResponse(placeholder,"Answer must contain \nmiddle character", responseType.ERROR.ordinal());
+            setResponse(placeholder,response1, responseType.ERROR.ordinal());
         }
         else if(solutionsFound.contains(answer)){
-            setResponse(placeholder,"Already found this answer", responseType.ERROR.ordinal());
+            setResponse(placeholder,response3, responseType.ERROR.ordinal());
         }
         else if(!solutions.contains(answer)){
 
-            setResponse(placeholder,"Inncorrect answer", responseType.ERROR.ordinal());
+            setResponse(placeholder,response4, responseType.ERROR.ordinal());
         }
         else {
 
             addPoint(pointView);
-            setResponse(placeholder,"Correct answer", responseType.SUCCESS.ordinal());
+            setResponse(placeholder,response5, responseType.SUCCESS.ordinal());
 
             storeAnswer(answer);
 
@@ -200,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
         String lang = sharedPreferences.getString("lang","no");
 
 
-        if(!lang.equals("no")){
+        if(lang.equals("en")){
             switchLanguageLocale.performClick();
 
         }
@@ -216,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
         TextView responseText =(TextView) findViewById(R.id.responseText);
         TextView pointView = (TextView) findViewById(R.id.pointView);
         TextView hintText = (TextView) findViewById(R.id.hintText);
-
+        int minLengthSolution = 4;
         Button knapp1 =(Button)findViewById(R.id.knapp1);
         Button knapp2 =(Button)findViewById(R.id.knapp2);
         Button knapp3 =(Button)findViewById(R.id.knapp3);
@@ -241,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferencesSetup(switchLanguageLocale,responseText,currentSolution);
         setCharsFromPrefrences(buttonList);
 
-        Resources res = getResources();
+        this.res = getResources();
         List<String> solutions = Arrays.asList(res.getStringArray(R.array.solutions));
 
         hintButton.setOnClickListener(new View.OnClickListener() {
@@ -260,16 +276,27 @@ public class MainActivity extends AppCompatActivity {
                 editor.putStringSet("solutionsFound",new HashSet<String>()).apply();
                 pointView.setText(String.valueOf(0) + " of 10");
                 resetButton.performClick();
+
+                //Se etter løsninge som inneholder knappen i midten, og ignorer ugyldige løsninger som er mindre enn 4
+                List<String> possibleSuffixes = solutions.stream().filter((x)->x.contains(knapp5.getText()) && x.length() >= minLengthSolution).collect(Collectors.toList());
+                //Ikke løsbar, så lang et nytt spill
+                if(possibleSuffixes.stream().count() < 3)
+                    newGameButton.performClick();
             }
         });
+
+
         switchLanguageLocale.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 newGameButton.performClick();
+
                 if(!switchLanguageLocale.isChecked()){
                     SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
                     String lang = sharedPreferences.getString("lang","no");
+                    if(lang.isEmpty())
+                        switchLanguageLocale.setText("te");
                     if(lang.equals("no")){
                         changeLanguage("en");
 
@@ -420,12 +447,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if(knapp5.getText().length() ==0){
+            newGameButton.performClick();
+        }
+
+    }
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        String lang = sharedPreferences.getString("lang","no");
+        if(lang != null){
+            changeLanguage(lang);
+        }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        Switch switchLanguageLocale = (Switch) findViewById(R.id.switchLanguageLocale);
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        String lang = sharedPreferences.getString("lang","no");
+
         ActionBar actionBar = getSupportActionBar();
         setup();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -439,6 +490,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+
             case R.id.allsolutions:
                 Intent allsolutionsIntent = new Intent(MainActivity.this,AllSolutionsActivity.class);
                 startActivity(allsolutionsIntent);

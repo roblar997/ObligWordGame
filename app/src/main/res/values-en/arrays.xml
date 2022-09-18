@@ -12,5 +12,11 @@
    <item>DRAW</item>
  <item>DOOR</item>
  </string-array>
+    <string name="response1">Each word needs at least 4 character</string>
+    <string name="response2">You have partially \n a correct solution</string>
+    <string name="response3">You already found this solution</string>
+    <string name="response4">Inncorrect solution</string>
+    <string name="response5">Correct solution</string>
+    <string name="response6">No solutions starting with your current input</string>
 </resources> 
 

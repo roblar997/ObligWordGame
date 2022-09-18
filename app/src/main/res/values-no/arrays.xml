@@ -11,6 +11,12 @@
   <item>RIPS</item>
    <item>SLAG</item>
  <item>HARPUN</item>
- </string-array> 
+ </string-array>
+    <string name="response1">Trenger ord på \n 4 bokstaver</string>
+    <string name="response2">Du har delvis \n en riktig løsning</string>
+    <string name="response3">Du har allerede \n funnet denne løsningen</string>
+    <string name="response4">Feil løsning</string>
+    <string name="response5">Riktig løsning</string>
+    <string name="response6">Ingen løsninger \n begynner med denne input</string>
 </resources> 
 
