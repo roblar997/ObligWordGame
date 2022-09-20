@@ -1,7 +1,6 @@
 package com.example.obligwordgame;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -18,9 +17,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class AllSolutionsActivity extends AppCompatActivity {
 
@@ -65,7 +62,7 @@ public class AllSolutionsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.home:
-                Intent homeIntent = new Intent(AllSolutionsActivity.this,MainActivity.class);
+                Intent homeIntent = new Intent(AllSolutionsActivity.this, PlayActivity.class);
                 startActivity(homeIntent);
                 return true;
             case R.id.allsolutions:
@@ -77,6 +74,15 @@ public class AllSolutionsActivity extends AppCompatActivity {
                 return true;
             case android.R.id.home:
                 finish();
+                return true;
+            case R.id.changeDifficulty:
+                Intent changedifficultyIntent = new Intent(AllSolutionsActivity.this,ChangeDifficultyActivity.class);
+                startActivity(changedifficultyIntent);
+                return true;
+
+            case R.id.rules:
+                Intent rulesIntent = new Intent(AllSolutionsActivity.this,RulesActivity.class);
+                startActivity(rulesIntent);
                 return true;
 
         }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
 xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:id="@+id/home"
-android:title="Home"/>
-<item android:id="@+id/allsolutions"
-android:title="All solutions"/>
+<item android:id="@+id/home"  android:title="Main menu"/>
+    <item android:id="@+id/play" android:title="Back to game"/>
+<item android:id="@+id/allsolutions" android:title="All solutions"/>
 <item android:id="@+id/wordsfound"
 android:title="Words found"/>
-
+    <item android:id="@+id/changeDifficulty" android:title="Change difficulty"/>
+    <item android:id="@+id/rules" android:title="Rules"/>
 
 </menu>

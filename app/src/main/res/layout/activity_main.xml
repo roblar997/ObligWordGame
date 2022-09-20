@@ -10,38 +10,11 @@
     tools:context=".MainActivity">
     //
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:text="WORD GUESSING GAME"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/dice" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="300dp"
         android:backgroundTint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:id="@+id/viewList"
@@ -49,6 +22,22 @@
             android:layout_height="match_parent"
             android:backgroundTint="#000000"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="WORD GUESSING GAME"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/dice" />
 
             <Button
                 android:id="@+id/continueKnapp"
@@ -68,33 +57,29 @@
                 android:id="@+id/wordsfoundKnapp2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#48BCF1"
-                android:text="@string/wordFoundText"
-                android:textColor="#000000" />
+                android:backgroundTint="#0091FF"
+                android:text="@string/wordFoundText" />
 
             <Button
                 android:id="@+id/rulesKnapp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#48BCF1"
-                android:text="@string/rulesText"
-                android:textColor="#000000" />
+                android:backgroundTint="#0091FF"
+                android:text="@string/rulesText" />
 
             <Button
                 android:id="@+id/allsolutionsKnapp"
                 android:layout_width="414dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#48BCF1"
-                android:text="@string/allSolutuionsText"
-                android:textColor="#000000" />
+                android:backgroundTint="#0091FF"
+                android:text="@string/allSolutuionsText" />
 
             <Button
                 android:id="@+id/wordsfoundKnapp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#48BCF1"
-                android:text="@string/wordFoundText"
-                android:textColor="#000000" />
+                android:backgroundTint="#0091FF"
+                android:text="@string/wordFoundText" />
 
             <Button
                 android:id="@+id/changeifficultyKnapp"

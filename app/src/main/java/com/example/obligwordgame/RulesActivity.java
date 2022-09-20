@@ -1,10 +1,14 @@
 package com.example.obligwordgame;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RulesActivity extends AppCompatActivity {
@@ -13,24 +17,49 @@ public class RulesActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
+
     }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater(); inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_rulesactivity);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-            //    Intent intent=new Intent(GoalActivity.this,MainActivity.class);
-             //   startActivity(intent);
+
+            case R.id.allsolutions:
+                Intent allsolutionsIntent = new Intent(RulesActivity.this, AllSolutionsActivity.class);
+                startActivity(allsolutionsIntent);
                 return true;
+            case R.id.wordsfound:
+                Intent wordsfoundIntent = new Intent(RulesActivity.this, WordFoundActivity.class);
+                startActivity(wordsfoundIntent);
+                return true;
+            case R.id.changeDifficulty:
+                Intent changedifficultyIntent = new Intent(RulesActivity.this, ChangeDifficultyActivity.class);
+                startActivity(changedifficultyIntent);
+                return true;
+
+            case R.id.home:
+                Intent mainIntent = new Intent(RulesActivity.this, PlayActivity.class);
+                startActivity(mainIntent);
+                return true;
+            case android.R.id.home:
+                finish();
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
 
-
-}
+    }

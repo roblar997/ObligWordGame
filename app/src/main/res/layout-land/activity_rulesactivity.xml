@@ -7,11 +7,14 @@
     android:background="#31615D"
     android:backgroundTint="#000000"
     android:orientation="vertical"
-    tools:context=".AllSolutionsActivity">
+    tools:context=".RulesActivity">
 
     <ScrollView
-        android:layout_width="415dp"
-        android:layout_height="734dp">
+        android:layout_width="720dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/viewList"
@@ -20,11 +23,19 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView18"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/allSolutuionsText"
+                android:id="@+id/ruleText"
+                android:layout_width="500dp"
+                android:layout_height="match_parent"
+                android:text="@string/rulesText"
                 android:textColor="#4CAF50"
+                android:textSize="34sp" />
+
+            <TextView
+                android:id="@+id/ruleInfo"
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:text="@string/ruleInfo"
+                android:textColor="#FFFFFF"
                 android:textSize="34sp" />
 
 

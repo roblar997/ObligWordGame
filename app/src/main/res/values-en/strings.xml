@@ -10,4 +10,9 @@
 	<string name="newgameText">NEW GAME</string>
 	<string name="solutionsFoundText">SOLUTIONS FOUND</string>
 	<string name="allSolutuionsText">ALL SOLUTIONS</string>
+	<string name="rulesText">Rules</string>
+	<string name="changeDifficultyText">Change difficulty</string>
+	<string name="ruleInfo">Main goal is to find words containing themiddle character.
+                         You cant submit the same word twice. By pressing the dice,you
+                         will randomize the characters surrounding the middle character.</string>
 </resources>

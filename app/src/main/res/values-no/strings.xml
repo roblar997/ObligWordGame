@@ -10,4 +10,7 @@
 	<string name="newgameText">NYTT SPILL</string>
 	<string name="solutionsFoundText">LØSNINGER FUNNET</string>
 	<string name="allSolutuionsText">ALLE LØSNINGER</string>
+	<string name="rulesText">Regler</string>
+	<string name="changeDifficultyText">Endre vanskelighetsgrad</string>
+	<string name="ruleInfo">Hoved oppgaven er å finne ord som inneholder midterste bokstav.Du kan ikke bruke samme ord to ganger. Det er krav om minst 4 bokstaveri hvert ord. Ved å trykke på terningen, så vil en kunne hente framnye tilfeldige bokstaver en kan trykke på.</string>
 </resources>

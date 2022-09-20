@@ -12,11 +12,13 @@
    <item>SLAG</item>
  <item>HARPUN</item>
  </string-array>
-    <string name="response1">Trenger ord på \n 4 bokstaver</string>
-    <string name="response2">Du har delvis \n en riktig løsning</string>
+    <string name="response1">Trenger ord på 4 bokstaver</string>
+    <string name="response2">Du har delvis  en riktig \nløsning</string>
     <string name="response3">Du har allerede \n funnet denne løsningen</string>
     <string name="response4">Feil løsning</string>
     <string name="response5">Riktig løsning</string>
     <string name="response6">Ingen løsninger \n begynner med denne input</string>
+    <string name="response7">Løsningen må inneholde \n bokstaven i midten</string>
+    <string name="response8">Hvert ord må ha maks {} bokstaver</string>
 </resources> 
 
