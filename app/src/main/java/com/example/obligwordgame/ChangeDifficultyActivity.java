@@ -3,6 +3,7 @@ package com.example.obligwordgame;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,13 +36,13 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        TextView nmbInput = findViewById(R.id.nmbWordsInput);
         TextView maxCharsInput = findViewById(R.id.maxCharsInput);
+        TextView nmbWordsInput = findViewById(R.id.nmbWordsInput);
         TextView feedbackText = findViewById(R.id.feedbackText);
 
-        Button nmbWordsKnapp =(Button)findViewById(R.id.nmbWordsKnapp);
         Button maxCharsKnapp =(Button)findViewById(R.id.maxCharsKnapp);
-        nmbInput.setOnClickListener(new View.OnClickListener() {
+        Button nmbWordsKnapp =(Button)findViewById(R.id.nmbWordsKnapp);
+        nmbWordsInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -61,18 +62,25 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = getSharedPreferences(getPackageName(), MODE_PRIVATE).edit();
                 if(maxCharsInput.getText().toString().length() == 0)
                     return;
+
                 editor.putInt("maxChars",Integer.parseInt(maxCharsInput.getText().toString())).apply();
-                feedbackText.setText("Endring utført");
+                Resources res = getResources();
+                String changeResponse = res.getString(R.string.changeResponseText);
+
+                feedbackText.setText(changeResponse);
             }
         });
         nmbWordsKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editor = getSharedPreferences(getPackageName(), MODE_PRIVATE).edit();
-                if(nmbInput.getText().toString().length() == 0)
+                if(nmbWordsInput.getText().toString().length() == 0)
                     return;
-                editor.putInt("nmbWords",Integer.parseInt(nmbInput.getText().toString())).apply();
-                feedbackText.setText("Endring utført");
+                editor.putInt("nmbWords",Integer.parseInt(nmbWordsInput.getText().toString())).apply();
+                Resources res = getResources();
+                String changeResponse = res.getString(R.string.changeResponseText);
+
+                feedbackText.setText(changeResponse);
             }
         });
     }

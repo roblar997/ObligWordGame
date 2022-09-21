@@ -75,6 +75,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ChangeLanguageActivity"
+            android:configChanges="orientation"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.ChangeLanguageActivity" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".RulesActivity"
             android:configChanges="orientation"
             android:exported="true">

@@ -3,33 +3,19 @@ package com.example.obligwordgame;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-    }
 
 
     protected void setup(){
@@ -38,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
         Button rulesKnapp       =(Button)findViewById(R.id.rulesKnapp);
         Button allSolutionKnapp =(Button)findViewById(R.id.allsolutionsKnapp);
         Button wordsFoundKnapp   =(Button)findViewById(R.id.wordsfoundKnapp);
-        Button changeifficultyKnapp =(Button)findViewById(R.id.changeifficultyKnapp);
+        Button changedifficultyKnapp =(Button)findViewById(R.id.changedifficultyKnapp);
+        Button changelanguageKnapp =(Button)findViewById(R.id.changeLanguageKnapp);
+        Button exitKnapp =(Button)findViewById(R.id.exitKnapp);
 
         continueKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(rulesIntent);
             }
         });
+
         allSolutionKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(wordsFoundIntent);
             }
         });
-        changeifficultyKnapp.setOnClickListener(new View.OnClickListener() {
+        changedifficultyKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent changedifficultyIntent = new Intent(MainActivity.this,ChangeDifficultyActivity.class);
@@ -86,13 +75,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        changelanguageKnapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent changelanguageIntent = new Intent(MainActivity.this,ChangeLanguageActivity.class);
+                startActivity(changelanguageIntent);
+            }
+        });
+        exitKnapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
 
                 setContentView(R.layout.activity_main);
+
                 setup();
 
 
@@ -108,8 +110,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.home:
-                Intent homeIntent = new Intent(MainActivity.this, PlayActivity.class);
-                startActivity(homeIntent);
+
                 return true;
             case R.id.allsolutions:
 
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(wordsfoundIntent);
                 return true;
             case android.R.id.home:
-                finish();
+
                 return true;
             case R.id.changeDifficulty:
                 Intent changedifficultyIntent = new Intent(MainActivity.this,ChangeDifficultyActivity.class);

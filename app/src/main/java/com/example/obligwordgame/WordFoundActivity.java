@@ -28,7 +28,7 @@ public class WordFoundActivity extends AppCompatActivity {
     }
 
 
-            @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
 
@@ -72,7 +72,7 @@ public class WordFoundActivity extends AppCompatActivity {
             case R.id.wordsfound:
                 return true;
             case android.R.id.home:
-                homeIntent = new Intent(WordFoundActivity.this, PlayActivity.class);
+                homeIntent = new Intent(WordFoundActivity.this, MainActivity.class);
                 startActivity(homeIntent);
                 return true;
 

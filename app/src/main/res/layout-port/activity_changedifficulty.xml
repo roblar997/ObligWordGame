@@ -25,7 +25,7 @@
                 android:id="@+id/ruleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Vanskelighetsgrad"
+                android:text="@string/difficultyText"
                 android:textColor="#4CAF50"
                 android:textSize="34sp" />
 
@@ -41,49 +41,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="Antall ord for å vinne"
+                android:text="@string/labelMaxWordsText"
                 android:textColor="#F8F8F8"
-                android:textSize="20sp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/nmbWordsInput"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:background="#FFFFFF"
-                android:backgroundTint="#F4F2F2"
-                android:ems="10"
-                android:inputType="number"
-                android:textColor="#000000" />
-
-            <Button
-                android:id="@+id/nmbWordsKnapp"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:backgroundTint="#FFF599"
-                android:text="Endre"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Maks antall bokstaver i et ord"
-                android:textColor="#FFFCFC"
-                android:textStyle="bold"
-                tools:textSize="20sp" />
 
             <EditText
                 android:id="@+id/maxCharsInput"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:background="#000000"
-                android:backgroundTint="#FFFFFF"
+                android:background="#FFFFFF"
+                android:backgroundTint="#F4F2F2"
                 android:ems="10"
                 android:inputType="number"
                 android:textColor="#000000" />
@@ -95,7 +64,38 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="#FFF599"
-                android:text="Endre"
+                android:text="@string/changeText"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/labelMaxCharsText"
+                android:textColor="#FFFCFC"
+                android:textStyle="bold"
+                tools:textSize="22dp" />
+
+            <EditText
+                android:id="@+id/nmbWordsInput"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="#000000"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:inputType="number"
+                android:textColor="#000000" />
+
+            <Button
+                android:id="@+id/nmbWordsKnapp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="#FFF599"
+                android:text="@string/changeText"
                 android:textColor="#000000" />
 
 

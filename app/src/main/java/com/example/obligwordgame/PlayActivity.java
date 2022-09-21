@@ -122,7 +122,9 @@ public class PlayActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
 
         int points = sharedPreferences.getInt("points",0) + 1;
-        if(points == 10){
+        int nmbWords = sharedPreferences.getInt("nmbWords",0);
+
+        if(points == nmbWords){
             Intent intent=new Intent(PlayActivity.this,GoalActivity.class);
             startActivity(intent);
 
@@ -132,7 +134,6 @@ public class PlayActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = this.getSharedPreferences(this.getPackageName(), MODE_PRIVATE).edit();
         editor.putInt("points", points).apply();
 
-        int nmbWords = sharedPreferences.getInt("nmbWords",0);
 
         pointView.setText(String.valueOf(points) + " of " + String.valueOf(nmbWords));
 

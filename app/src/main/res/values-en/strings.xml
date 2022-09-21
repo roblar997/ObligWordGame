@@ -11,6 +11,13 @@
 	<string name="solutionsFoundText">SOLUTIONS FOUND</string>
 	<string name="allSolutuionsText">ALL SOLUTIONS</string>
 	<string name="rulesText">Rules</string>
+	<string name="changeText">Change</string>
+	<string name="difficultyText">Change difficulty</string>
+	<string name="labelMaxWordsText">Max number of characters in a word</string>
+	<string name="labelMaxCharsText">Number of words to win</string>
+	<string name="changeLangaugeText">Change language</string>
+	<string name="changeResponseText">Change done</string>
+	<string name="continueText">Continue</string>
 	<string name="changeDifficultyText">Change difficulty</string>
 	<string name="ruleInfo">Main goal is to find words containing themiddle character.
                          You cant submit the same word twice. By pressing the dice,you

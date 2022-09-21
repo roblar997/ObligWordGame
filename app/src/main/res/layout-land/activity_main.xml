@@ -6,15 +6,26 @@
     android:layout_height="730dp"
     android:background="#31615D"
     android:backgroundTint="#FFFFFF"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".MainActivity">
-    //
+
+
+    <Button
+        android:id="@+id/continueKnapp"
+        android:layout_width="221dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#26852A"
+        android:text="@string/continueText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="10dp"
         android:text="WORD GUESSING GAME"
         android:textAlignment="center"
@@ -27,83 +38,94 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/dice" />
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="318dp"
+        android:layout_height="719dp"
         android:layout_marginStart="300dp"
         android:backgroundTint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/viewList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="1sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="#000000"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/continueKnapp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#4CAF50"
-                android:text="Continue" />
-
-            <Button
-                android:id="@+id/newgameKnapp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#F34336"
-                android:text="@string/newgameText" />
-
-            <Button
-                android:id="@+id/wordsfoundKnapp2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#48BCF1"
-                android:text="@string/wordFoundText"
-                android:textColor="#000000" />
-
-            <Button
-                android:id="@+id/rulesKnapp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#48BCF1"
-                android:text="@string/rulesText"
-                android:textColor="#000000" />
-
-            <Button
-                android:id="@+id/allsolutionsKnapp"
-                android:layout_width="414dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#48BCF1"
-                android:text="@string/allSolutuionsText"
-                android:textColor="#000000" />
+            android:orientation="vertical"
+            tools:layout_marginLeft="1dp">
 
             <Button
                 android:id="@+id/wordsfoundKnapp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#48BCF1"
+                android:backgroundTint="#1D6281"
                 android:text="@string/wordFoundText"
-                android:textColor="#000000" />
+                android:textColor="#FFFFFF" />
 
             <Button
-                android:id="@+id/changeifficultyKnapp"
+                android:id="@+id/rulesKnapp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#F34336"
+                android:backgroundTint="#1D6281"
+                android:text="@string/rulesText"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/allsolutionsKnapp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1D6281"
+                android:text="@string/allSolutuionsText"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/changedifficultyKnapp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1D6281"
+                android:text="@string/changeDifficultyText"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/changeLanguageKnapp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1D6281"
+                android:text="@string/changeLangaugeText"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/exitKnapp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#BF2519"
                 android:text="EXIT" />
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/newgameKnapp"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#BF2519"
+        android:text="@string/newgameText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/continueKnapp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
