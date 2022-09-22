@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashSet;
+
 public class ChangeDifficultyActivity extends AppCompatActivity {
 
     @Override
@@ -42,6 +44,13 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
 
         Button maxCharsKnapp =(Button)findViewById(R.id.maxCharsKnapp);
         Button nmbWordsKnapp =(Button)findViewById(R.id.nmbWordsKnapp);
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+
+        int nmbWords = sharedPreferences.getInt("nmbWords",10);
+        int maxChars = sharedPreferences.getInt("maxChars",10);
+        maxCharsInput.setText(String.valueOf(maxChars));
+        nmbWordsInput.setText(String.valueOf(nmbWords));
+
         nmbWordsInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +76,13 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
                 Resources res = getResources();
                 String changeResponse = res.getString(R.string.changeResponseText);
 
+
                 feedbackText.setText(changeResponse);
+
+                SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+                int nmbWords = sharedPreferences.getInt("nmbWords",0);
+                editor.putInt("points", 0).apply();
+                editor.putStringSet("solutionsFound",new HashSet<String>()).apply();
             }
         });
         nmbWordsKnapp.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +96,11 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
                 String changeResponse = res.getString(R.string.changeResponseText);
 
                 feedbackText.setText(changeResponse);
+
+                SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+                int nmbWords = sharedPreferences.getInt("nmbWords",0);
+                editor.putInt("points", 0).apply();
+                editor.putStringSet("solutionsFound",new HashSet<String>()).apply();
             }
         });
     }

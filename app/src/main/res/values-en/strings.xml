@@ -19,7 +19,6 @@
 	<string name="changeResponseText">Change done</string>
 	<string name="continueText">Continue</string>
 	<string name="changeDifficultyText">Change difficulty</string>
-	<string name="ruleInfo">Main goal is to find words containing themiddle character.
-                         You cant submit the same word twice. By pressing the dice,you
-                         will randomize the characters surrounding the middle character.</string>
+	<string name="ruleInfo">Main goal is to find words containing the middle character.
+                         You cant submit the same word twice. By pressing the dice,you will randomize the characters surrounding the middle character.</string>
 </resources>
