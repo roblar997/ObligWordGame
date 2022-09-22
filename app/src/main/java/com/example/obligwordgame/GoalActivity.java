@@ -48,8 +48,8 @@ public class GoalActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intent=new Intent(GoalActivity.this, PlayActivity.class);
-                startActivity(intent);
+                Intent mainIntent2= new Intent(GoalActivity.this, MainActivity.class);
+                startActivity(mainIntent2);
                 return true;
         }
         return super.onOptionsItemSelected(item);

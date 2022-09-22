@@ -49,13 +49,17 @@ public class RulesActivity extends AppCompatActivity {
                 Intent changedifficultyIntent = new Intent(RulesActivity.this, ChangeDifficultyActivity.class);
                 startActivity(changedifficultyIntent);
                 return true;
-
+            case R.id.play:
+                Intent playIntent = new Intent(RulesActivity.this,PlayActivity.class);
+                startActivity(playIntent);
+                return true;
             case R.id.home:
                 Intent mainIntent = new Intent(RulesActivity.this, PlayActivity.class);
                 startActivity(mainIntent);
                 return true;
             case android.R.id.home:
-                finish();
+                Intent mainIntent2= new Intent(RulesActivity.this, MainActivity.class);
+                startActivity(mainIntent2);
                 return true;
 
         }

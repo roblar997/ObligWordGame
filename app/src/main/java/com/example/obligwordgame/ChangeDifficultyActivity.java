@@ -132,13 +132,17 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
                 Intent rulesIntent = new Intent(ChangeDifficultyActivity.this, RulesActivity.class);
                 startActivity(rulesIntent);
                 return true;
-
+            case R.id.play:
+                Intent playIntent = new Intent(ChangeDifficultyActivity.this,PlayActivity.class);
+                startActivity(playIntent);
+                return true;
             case R.id.home:
-                Intent mainIntent = new Intent(ChangeDifficultyActivity.this, PlayActivity.class);
+                Intent mainIntent = new Intent(ChangeDifficultyActivity.this, MainActivity.class);
                 startActivity(mainIntent);
                 return true;
             case android.R.id.home:
-                finish();
+                Intent mainIntent2= new Intent(ChangeDifficultyActivity.this, MainActivity.class);
+                startActivity(mainIntent2);
 
         }
         return super.onOptionsItemSelected(item);

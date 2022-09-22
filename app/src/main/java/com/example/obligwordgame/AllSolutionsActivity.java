@@ -62,8 +62,8 @@ public class AllSolutionsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.home:
-                Intent homeIntent = new Intent(AllSolutionsActivity.this, PlayActivity.class);
-                startActivity(homeIntent);
+                Intent mainIntent = new Intent(AllSolutionsActivity.this, MainActivity.class);
+                startActivity(mainIntent);
                 return true;
             case R.id.allsolutions:
 
@@ -73,13 +73,16 @@ public class AllSolutionsActivity extends AppCompatActivity {
                 startActivity(wordsfoundIntent);
                 return true;
             case android.R.id.home:
-                finish();
-                return true;
+                Intent mainIntent2= new Intent(AllSolutionsActivity.this, MainActivity.class);
+                startActivity(mainIntent2);
             case R.id.changeDifficulty:
                 Intent changedifficultyIntent = new Intent(AllSolutionsActivity.this,ChangeDifficultyActivity.class);
                 startActivity(changedifficultyIntent);
                 return true;
-
+            case R.id.play:
+                Intent playIntent = new Intent(AllSolutionsActivity.this,PlayActivity.class);
+                startActivity(playIntent);
+                return true;
             case R.id.rules:
                 Intent rulesIntent = new Intent(AllSolutionsActivity.this,RulesActivity.class);
                 startActivity(rulesIntent);

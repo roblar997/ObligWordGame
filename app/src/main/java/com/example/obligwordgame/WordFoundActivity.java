@@ -69,6 +69,10 @@ public class WordFoundActivity extends AppCompatActivity {
                 Intent allsolutionsIntent = new Intent(WordFoundActivity.this,AllSolutionsActivity.class);
                 startActivity(allsolutionsIntent);
                 return true;
+            case R.id.play:
+                Intent playIntent = new Intent(WordFoundActivity.this,PlayActivity.class);
+                startActivity(playIntent);
+                return true;
             case R.id.wordsfound:
                 return true;
             case android.R.id.home:

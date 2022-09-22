@@ -123,13 +123,18 @@ public class ChangeLanguageActivity extends AppCompatActivity {
                 Intent rulesIntent = new Intent(ChangeLanguageActivity.this, RulesActivity.class);
                 startActivity(rulesIntent);
                 return true;
-
+            case R.id.play:
+                Intent playIntent = new Intent(ChangeLanguageActivity.this,PlayActivity.class);
+                startActivity(playIntent);
+                return true;
             case R.id.home:
-                Intent mainIntent = new Intent(ChangeLanguageActivity.this, PlayActivity.class);
+                Intent mainIntent = new Intent(ChangeLanguageActivity.this, MainActivity.class);
                 startActivity(mainIntent);
                 return true;
             case android.R.id.home:
-                finish();
+                Intent mainIntent2= new Intent(ChangeLanguageActivity.this, MainActivity.class);
+                startActivity(mainIntent2);
+
 
         }
         return super.onOptionsItemSelected(item);

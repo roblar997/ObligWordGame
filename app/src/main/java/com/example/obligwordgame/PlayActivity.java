@@ -318,8 +318,7 @@ public class PlayActivity extends AppCompatActivity {
                 if(!switchLanguageLocale.isChecked()){
 
                     String lang = sharedPreferences.getString("lang","no");
-                    if(lang.isEmpty())
-                        switchLanguageLocale.setText("te");
+
                     if(lang.equals("no")){
                         changeLanguage("en");
 
@@ -537,13 +536,17 @@ public class PlayActivity extends AppCompatActivity {
                 Intent changedifficultyIntent = new Intent(PlayActivity.this,ChangeDifficultyActivity.class);
                 startActivity(changedifficultyIntent);
                 return true;
-
+            case R.id.home:
+                Intent mainIntent = new Intent(PlayActivity.this, MainActivity.class);
+                startActivity(mainIntent);
+                return true;
             case R.id.rules:
                 Intent rulesIntent = new Intent(PlayActivity.this,RulesActivity.class);
                 startActivity(rulesIntent);
                 return true;
             case android.R.id.home:
-                finish();
+                Intent mainIntent2= new Intent(PlayActivity.this, MainActivity.class);
+                startActivity(mainIntent2);
                 return true;
         }
         return super.onOptionsItemSelected(item);

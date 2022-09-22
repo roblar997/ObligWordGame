@@ -19,7 +19,7 @@
     <string name="response5">Riktig løsning</string>
     <string name="response6">Ingen løsninger \n begynner med denne input</string>
     <string name="response7">Løsningen må inneholde \n bokstaven i midten</string>
-    <string name="response8">Hvert ord må ha maks {} bokstaver</string>
+    <string name="response8">Hvert ord må ha  maks \n {} bokstaver</string>
     <integer name="defaultMaxChars">10</integer>
     <integer name="defaultNmbWords">3</integer>
 </resources> 

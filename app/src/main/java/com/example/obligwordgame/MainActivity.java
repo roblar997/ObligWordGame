@@ -113,8 +113,10 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             case R.id.allsolutions:
-
+                Intent allSolutionsActivityIntent = new Intent(MainActivity.this,AllSolutionsActivity.class);
+                startActivity(allSolutionsActivityIntent);
                 return true;
+
             case R.id.wordsfound:
                 Intent wordsfoundIntent = new Intent(MainActivity.this,WordFoundActivity.class);
                 startActivity(wordsfoundIntent);
@@ -126,7 +128,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent changedifficultyIntent = new Intent(MainActivity.this,ChangeDifficultyActivity.class);
                 startActivity(changedifficultyIntent);
                 return true;
-
+            case R.id.play:
+                Intent playIntent = new Intent(MainActivity.this,PlayActivity.class);
+                startActivity(playIntent);
+                return true;
             case R.id.rules:
                 Intent rulesIntent = new Intent(MainActivity.this,RulesActivity.class);
                 startActivity(rulesIntent);
