@@ -296,9 +296,9 @@ public class PlayActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 newGameButton.performClick();
-
+                SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
                 if(!switchLanguageLocale.isChecked()){
-                    SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+
                     String lang = sharedPreferences.getString("lang","no");
                     if(lang.isEmpty())
                         switchLanguageLocale.setText("te");
@@ -313,7 +313,7 @@ public class PlayActivity extends AppCompatActivity {
 
                 }
                 else{
-                    SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+
                     String lang = sharedPreferences.getString("lang","no");
                     if(lang.equals("no")){
                         changeLanguage("en");
@@ -323,6 +323,10 @@ public class PlayActivity extends AppCompatActivity {
                     }
 
                 }
+                TextView pointView = (TextView) findViewById(R.id.pointView);
+                int nmbWords = sharedPreferences.getInt("nmbWords",0);
+                int points = sharedPreferences.getInt("points",0);
+                pointView.setText(String.valueOf(points) + " of " + String.valueOf(nmbWords));
 
 
 
