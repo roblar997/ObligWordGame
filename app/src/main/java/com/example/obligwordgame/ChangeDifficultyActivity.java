@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -71,9 +72,19 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = getSharedPreferences(getPackageName(), MODE_PRIVATE).edit();
                 if(maxCharsInput.getText().toString().length() == 0)
                     return;
-
-                editor.putInt("maxChars",Integer.parseInt(maxCharsInput.getText().toString())).apply();
                 Resources res = getResources();
+                if(Integer.valueOf(maxCharsInput.getText().toString()) <  4){
+                    String response = res.getString(R.string.response1);
+
+                    feedbackText.setTextColor(Color.parseColor ("#F44336"));
+                    feedbackText.setText(response);
+                    return;
+
+                }
+                else
+                    feedbackText.setTextColor(Color.parseColor ("#01FF0B"));
+                editor.putInt("maxChars",Integer.parseInt(maxCharsInput.getText().toString())).apply();
+
                 String changeResponse = res.getString(R.string.changeResponseText);
 
 
