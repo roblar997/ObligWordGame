@@ -20,7 +20,9 @@
             android:id="@+id/viewList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            tools:layout_marginLeft="10dp">
 
             <TextView
                 android:id="@+id/ruleText"
@@ -34,7 +36,7 @@
             <TextView
                 android:id="@+id/feedbackText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="6dp"
                 android:textColor="#01FF0B"
                 android:textSize="24sp" />
 
