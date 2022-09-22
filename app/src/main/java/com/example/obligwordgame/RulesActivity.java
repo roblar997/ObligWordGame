@@ -53,6 +53,10 @@ public class RulesActivity extends AppCompatActivity {
                 Intent playIntent = new Intent(RulesActivity.this,PlayActivity.class);
                 startActivity(playIntent);
                 return true;
+            case R.id.language:
+                Intent languageIntent = new Intent(RulesActivity.this,ChangeLanguageActivity.class);
+                startActivity(languageIntent);
+                return true;
             case R.id.home:
                 Intent mainIntent = new Intent(RulesActivity.this, PlayActivity.class);
                 startActivity(mainIntent);

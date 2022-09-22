@@ -121,6 +121,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent wordsfoundIntent = new Intent(MainActivity.this,WordFoundActivity.class);
                 startActivity(wordsfoundIntent);
                 return true;
+            case R.id.language:
+                Intent languageIntent = new Intent(MainActivity.this,ChangeLanguageActivity.class);
+                startActivity(languageIntent);
+                return true;
             case android.R.id.home:
 
                 return true;

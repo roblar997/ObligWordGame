@@ -143,6 +143,10 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
             case android.R.id.home:
                 Intent mainIntent2= new Intent(ChangeDifficultyActivity.this, MainActivity.class);
                 startActivity(mainIntent2);
+            case R.id.language:
+                Intent languageIntent = new Intent(ChangeDifficultyActivity.this,ChangeLanguageActivity.class);
+                startActivity(languageIntent);
+                return true;
 
         }
         return super.onOptionsItemSelected(item);

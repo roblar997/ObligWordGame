@@ -536,6 +536,10 @@ public class PlayActivity extends AppCompatActivity {
                 Intent changedifficultyIntent = new Intent(PlayActivity.this,ChangeDifficultyActivity.class);
                 startActivity(changedifficultyIntent);
                 return true;
+            case R.id.language:
+                Intent languageIntent = new Intent(PlayActivity.this,ChangeLanguageActivity.class);
+                startActivity(languageIntent);
+                return true;
             case R.id.home:
                 Intent mainIntent = new Intent(PlayActivity.this, MainActivity.class);
                 startActivity(mainIntent);

@@ -131,6 +131,10 @@ public class ChangeLanguageActivity extends AppCompatActivity {
                 Intent mainIntent = new Intent(ChangeLanguageActivity.this, MainActivity.class);
                 startActivity(mainIntent);
                 return true;
+            case R.id.language:
+                Intent languageIntent = new Intent(ChangeLanguageActivity.this,ChangeLanguageActivity.class);
+                startActivity(languageIntent);
+                return true;
             case android.R.id.home:
                 Intent mainIntent2= new Intent(ChangeLanguageActivity.this, MainActivity.class);
                 startActivity(mainIntent2);

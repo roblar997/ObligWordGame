@@ -87,6 +87,10 @@ public class AllSolutionsActivity extends AppCompatActivity {
                 Intent rulesIntent = new Intent(AllSolutionsActivity.this,RulesActivity.class);
                 startActivity(rulesIntent);
                 return true;
+            case R.id.language:
+                Intent languageIntent = new Intent(AllSolutionsActivity.this,ChangeLanguageActivity.class);
+                startActivity(languageIntent);
+                return true;
 
         }
         return super.onOptionsItemSelected(item);
