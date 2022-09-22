@@ -218,6 +218,23 @@ public class PlayActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         String lang = sharedPreferences.getString("lang","no");
 
+        int nmbWords = sharedPreferences.getInt("nmbWords",0);
+        int maxChars = sharedPreferences.getInt("maxChars",0);
+
+        if(maxChars == 0){
+            Resources res = getResources();
+            int defaultMaxChars = res.getInteger(R.integer.defaultMaxChars);
+            SharedPreferences.Editor editor = this.getSharedPreferences(this.getPackageName(), MODE_PRIVATE).edit();
+            editor.putInt("maxChars", defaultMaxChars).apply();
+
+        }
+        if(nmbWords == 0){
+            Resources res = getResources();
+            int defaultNmbWords = res.getInteger(R.integer.defaultNmbWords);
+            SharedPreferences.Editor editor = this.getSharedPreferences(this.getPackageName(), MODE_PRIVATE).edit();
+            editor.putInt("nmbWords", defaultNmbWords).apply();
+        }
+
 
         if(lang.equals("en")){
             switchLanguageLocale.performClick();
@@ -236,6 +253,7 @@ public class PlayActivity extends AppCompatActivity {
         TextView pointView = (TextView) findViewById(R.id.pointView);
         TextView hintText = (TextView) findViewById(R.id.hintText);
         int minLengthSolution = 4;
+
         Button knapp1 =(Button)findViewById(R.id.knapp1);
         Button knapp2 =(Button)findViewById(R.id.knapp2);
         Button knapp3 =(Button)findViewById(R.id.knapp3);
@@ -373,8 +391,7 @@ public class PlayActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setResponse(responseText,"", 0);
                 hintText.setText("");
-                if(currentSolution.getText().length() == 12)
-                    return;
+
                 currentSolution.setText(currentSolution.getText()+""+knapp1.getText());
                 saveCurrentSolution(currentSolution.getText().toString());
             }
@@ -384,8 +401,7 @@ public class PlayActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setResponse(responseText,"", 0);
                 hintText.setText("");
-                if(currentSolution.getText().length() == 12)
-                    return;
+
                 currentSolution.setText(currentSolution.getText()+""+knapp2.getText());
                 saveCurrentSolution(currentSolution.getText().toString());
             }
@@ -395,8 +411,7 @@ public class PlayActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setResponse(responseText,"", 0);
                 hintText.setText("");
-                if(currentSolution.getText().length() == 12)
-                    return;
+
                 currentSolution.setText(currentSolution.getText()+""+knapp3.getText());
                 saveCurrentSolution(currentSolution.getText().toString());
             }
@@ -406,8 +421,7 @@ public class PlayActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setResponse(responseText,"", 0);
                 hintText.setText("");
-                if(currentSolution.getText().length() == 12)
-                    return;
+
                 currentSolution.setText(currentSolution.getText()+""+knapp4.getText());
                 saveCurrentSolution(currentSolution.getText().toString());
             }
@@ -417,8 +431,7 @@ public class PlayActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setResponse(responseText,"", 0);
                 hintText.setText("");
-                if(currentSolution.getText().length() == 12)
-                    return;
+
                 currentSolution.setText(currentSolution.getText()+""+knapp5.getText());
                 saveCurrentSolution(currentSolution.getText().toString());
             }
@@ -428,8 +441,7 @@ public class PlayActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setResponse(responseText,"", 0);
                 hintText.setText("");
-                if(currentSolution.getText().length() == 12)
-                    return;
+
                 currentSolution.setText(currentSolution.getText()+""+knapp6.getText());
                 saveCurrentSolution(currentSolution.getText().toString());
             }
@@ -439,8 +451,7 @@ public class PlayActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setResponse(responseText,"", 0);
                 hintText.setText("");
-                if(currentSolution.getText().length() == 12)
-                    return;
+
                 currentSolution.setText(currentSolution.getText()+""+knapp7.getText());
                 saveCurrentSolution(currentSolution.getText().toString());
             }

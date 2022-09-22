@@ -20,5 +20,7 @@
     <string name="response6">No solutions starting \n with your current input</string>
     <string name="response7">Solution must contain \n middle character</string>
     <string name="response8">Each word nead at most {} characters</string>
+    <integer name="defaultMaxChars">10</integer>
+    <integer name="defaultNmbWords">3</integer>
 </resources> 
 

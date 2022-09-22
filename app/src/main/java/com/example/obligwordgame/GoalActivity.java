@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashSet;
+
 public class GoalActivity extends AppCompatActivity {
 
     @Override
@@ -38,7 +40,9 @@ public class GoalActivity extends AppCompatActivity {
                     }
                 });
                 SharedPreferences.Editor editor = this.getSharedPreferences(this.getPackageName(), MODE_PRIVATE).edit();
-                editor.clear().apply();
+                editor.putInt("points", 0).apply();
+                editor.putStringSet("solutionsFound",new HashSet<String>()).apply();
+                editor.putString("currentSolution", "").apply();
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
