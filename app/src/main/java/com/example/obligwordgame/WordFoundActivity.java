@@ -77,6 +77,10 @@ public class WordFoundActivity extends AppCompatActivity {
                 Intent playIntent = new Intent(WordFoundActivity.this,PlayActivity.class);
                 startActivity(playIntent);
                 return true;
+            case R.id.changeDifficulty:
+                Intent changedifficultyIntent = new Intent(WordFoundActivity.this,ChangeDifficultyActivity.class);
+                startActivity(changedifficultyIntent);
+                return true;
             case R.id.language:
                 Intent languageIntent = new Intent(WordFoundActivity.this,ChangeLanguageActivity.class);
                 startActivity(languageIntent);
