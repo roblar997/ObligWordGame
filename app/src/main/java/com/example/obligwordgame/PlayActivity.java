@@ -12,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -40,8 +43,6 @@ public class PlayActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-
-
 
     }
     protected  void saveLanguage(String lang){
@@ -249,6 +250,19 @@ public class PlayActivity extends AppCompatActivity {
     protected void setup(){
 
         TextView currentSolution=(TextView) findViewById(R.id.currentSolution);
+        currentSolution.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {}
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                saveCurrentSolution(currentSolution.getText().toString());
+
+            }
+        });
+        currentSolution.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
         TextView responseText =(TextView) findViewById(R.id.responseText);
         TextView pointView = (TextView) findViewById(R.id.pointView);
         TextView hintText = (TextView) findViewById(R.id.hintText);
@@ -287,6 +301,7 @@ public class PlayActivity extends AppCompatActivity {
                 getHint(solutions,currentSolution,hintText,knapp5.getText().toString(),responseText);
             }
         });
+
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -480,7 +495,7 @@ public class PlayActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-
+        setContentView(R.layout.activity_play);
         TextView pointView = (TextView) findViewById(R.id.pointView);
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         String lang = sharedPreferences.getString("lang","no");

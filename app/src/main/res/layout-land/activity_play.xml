@@ -94,7 +94,6 @@
                     android:backgroundTint="#C8352A"
                     android:text="@string/newgameText"
                     android:textSize="12sp"
-                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/switchLanguageLocale"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -290,15 +289,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
+                    <EditText
                         android:id="@+id/currentSolution"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
                         android:gravity="center"
                         android:textAlignment="textEnd"
                         android:textColor="#FDFDFD"
-                        android:textSize="34sp"
+                        android:textSize="24sp"
+                        android:digits="abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -306,11 +306,14 @@
                         android:id="@+id/hintText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
+                        android:layout_marginStart="-2dp"
+                        android:layout_marginBottom="8dp"
                         android:textColor="#8BC34A"
-                        android:textSize="34sp"
+                        android:textSize="25sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/currentSolution"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.761" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

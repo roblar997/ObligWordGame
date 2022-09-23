@@ -133,8 +133,8 @@
 
                 <ImageView
                     android:id="@+id/randomButton"
-                    android:layout_width="92dp"
-                    android:layout_height="79dp"
+                    android:layout_width="84dp"
+                    android:layout_height="64dp"
                     android:layout_marginStart="250dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:srcCompat="@drawable/dice" />
@@ -144,7 +144,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="15dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
@@ -362,14 +362,16 @@
                 android:layout_marginLeft="50sp"
                 android:background="#040404">
 
-                <TextView
+                <EditText
                     android:id="@+id/currentSolution"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textAlignment="textEnd"
                     android:textColor="#FDFDFD"
-                    android:textSize="34sp"
+                    android:textSize="24sp"
+                    android:digits="abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -377,10 +379,13 @@
                     android:id="@+id/hintText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
+                    android:layout_marginStart="-2dp"
+                    android:layout_marginBottom="1dp"
                     android:textColor="#8BC34A"
-                    android:textSize="34sp"
-                    app:layout_constraintStart_toEndOf="@+id/currentSolution" />
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/currentSolution"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </TableRow>
