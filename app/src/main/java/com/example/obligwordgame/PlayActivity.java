@@ -100,12 +100,23 @@ public class PlayActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         Set<String> solutionsFound = sharedPreferences.getStringSet("solutionsFound",new HashSet<String>());
 
+
         List<String> possibleSuffixes = solutions.stream().filter((x)->x.startsWith(currentSolutionText) && x.contains(middleButtonChar) && !solutionsFound.contains(x)).map((x)->x.replaceFirst(currentSolutionText,"")).collect(Collectors.toList());
 
         String response2 = res.getString(R.string.response2);
         String response6 = res.getString(R.string.response6);
-        if(possibleSuffixes.contains(""))
+        if(!solutionsFound.contains(currentSolution.getText().toString()) && solutions.contains(currentSolution.getText().toString())){
+            String response9 = res.getString(R.string.response9);
+            setResponse(responsText,response9,responseType.INFO.ordinal());
             return;
+        }
+
+        if(possibleSuffixes.contains("")){
+
+
+                return;
+        }
+
         if(possibleSuffixes.isEmpty()){
             setResponse(responsText,response6, responseType.INFO.ordinal());
             return;
@@ -325,6 +336,11 @@ public class PlayActivity extends AppCompatActivity {
 
         String currentSolution = sharedPreferences.getString("currentSolution","");
         currentSolutionView.setText(currentSolution);
+        int points = sharedPreferences.getInt("points",0);
+        TextView pointView = (TextView) findViewById(R.id.pointView);
+
+
+        pointView.setText(String.valueOf(points) + " of " + String.valueOf(nmbWords));
     }
 
     /**
@@ -561,9 +577,6 @@ public class PlayActivity extends AppCompatActivity {
             }
         });
 
-        if(knapp5.getText().length() ==0){
-            newGameButton.performClick();
-        }
 
     }
     @Override
@@ -579,9 +592,9 @@ public class PlayActivity extends AppCompatActivity {
         TextView pointView = (TextView) findViewById(R.id.pointView);
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         String lang = sharedPreferences.getString("lang","no");
-        if(lang != null){
-            changeLanguage(lang);
-        }
+
+        changeLanguage(lang);
+
         int points = sharedPreferences.getInt("points",0);
         int nmbWords = sharedPreferences.getInt("nmbWords",0);
 
@@ -601,11 +614,8 @@ public class PlayActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         setup();
-        int points = sharedPreferences.getInt("points",0);
-        TextView pointView = (TextView) findViewById(R.id.pointView);
-        int nmbWords = sharedPreferences.getInt("nmbWords",0);
 
-        pointView.setText(String.valueOf(points) + " of " + String.valueOf(nmbWords));
+
 
         actionBar.setDisplayHomeAsUpEnabled(true);
 
