@@ -40,6 +40,7 @@ public class GoalActivity extends AppCompatActivity {
                     }
                 });
                 SharedPreferences.Editor editor = this.getSharedPreferences(this.getPackageName(), MODE_PRIVATE).edit();
+                 //New game
                 editor.putInt("points", 0).apply();
                 editor.putStringSet("solutionsFound",new HashSet<String>()).apply();
                 editor.putString("currentSolution", "").apply();

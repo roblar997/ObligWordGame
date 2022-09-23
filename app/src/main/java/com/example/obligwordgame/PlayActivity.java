@@ -45,12 +45,21 @@ public class PlayActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
 
     }
+
+    /**
+     * Store language in prefrences
+     * @param lang
+     */
     protected  void saveLanguage(String lang){
         SharedPreferences.Editor editor = this.getSharedPreferences(this.getPackageName(), MODE_PRIVATE).edit();
         editor.putString("lang", lang).apply();
 
     }
 
+    /**
+     * Change language, and store this in prefrences
+     * @param lang change language to this
+     */
     protected void changeLanguage(  String lang){
         saveLanguage(lang);
         Locale locale = new Locale(lang);
@@ -63,6 +72,11 @@ public class PlayActivity extends AppCompatActivity {
         setup();
     }
 
+    /**
+     * Add chars from prefrences to the given buttons
+     *
+     * @param buttonList
+     */
     protected void setCharsFromPrefrences(List<Button> buttonList){
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
 
@@ -71,6 +85,15 @@ public class PlayActivity extends AppCompatActivity {
             x.setText(text);
         });
     }
+
+    /**
+     * Looks for next possible character, given input
+     * @param solutions        All possible solutions
+     * @param currentSolution  Input given from user
+     * @param hintText         Where to place the hint
+     * @param middleButtonChar Character in middle button
+     * @param responsText      Where to give the response
+     */
     protected void getHint(List<String> solutions, TextView currentSolution, TextView hintText, String middleButtonChar,TextView responsText){
         String currentSolutionText = currentSolution.getText().toString();
         SharedPreferences.Editor editor = this.getSharedPreferences(this.getPackageName(), MODE_PRIVATE).edit();
@@ -93,14 +116,23 @@ public class PlayActivity extends AppCompatActivity {
         int randIndex = rand.nextInt(possibleSuffixes.size());
         hintText.setText( String.valueOf(possibleSuffixes.get(randIndex).toString().charAt(0))) ;
     }
+
+    /**
+     * List of button to will be given a random char
+     * @param buttonList list of buttons
+     */
     protected void randomChars(List<Button> buttonList){
 
+        //Common approach to avoid final, to be able to change
+        //Outside foreach loop - that is a concurrent thing.
         AtomicReference<String> gen;
         SharedPreferences.Editor editor = this.getSharedPreferences(this.getPackageName(), MODE_PRIVATE).edit();
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         String lang = sharedPreferences.getString("lang","no");
 
 
+        //Random letters to choose from, based on wether one are using
+        //Norwegian language or not
         if(!lang.equals("no"))
             gen = new AtomicReference<String>("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         else
@@ -108,16 +140,27 @@ public class PlayActivity extends AppCompatActivity {
 
         Random rand = new Random();
 
-
+        //Concurrent thing that can access final and atomic things
+        //outside foreach loop
         buttonList.forEach((x)->{
             int randVal = rand.nextInt(gen.get().length());
 
+            //A random cahracter
             x.setText(String.valueOf(gen.get().charAt(randVal)));
+            //Remove this character as possible candidate
             gen.set(gen.get().replace(String.valueOf(gen.get().charAt(randVal)),""));
+
+            //Remember this in prefrences
             editor.putString(String.valueOf(x.getId())+"Text", x.getText().toString()).apply();
         });
 
         }
+
+    /**
+     * Update overview of how many points one have, in given textview
+      * @param pointView where overview of number of points is
+     * @return
+     */
     protected boolean addPoint(TextView pointView){
 
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
@@ -140,10 +183,22 @@ public class PlayActivity extends AppCompatActivity {
 
         return false;
     }
+
+    /**
+     * Save solution from input in prefences
+     * @param currentSolution text from input
+     */
     protected void saveCurrentSolution(String currentSolution){
         SharedPreferences.Editor editor = this.getSharedPreferences(this.getPackageName(), MODE_PRIVATE).edit();
         editor.putString("currentSolution", currentSolution).apply();
     }
+
+    /**
+     * Set response from input, to a given placeholder - with a given type of response
+     * @param placeholder Where to place the response
+     * @param message Response to give the user
+     * @param responseType Type of response like ERROR, INFO, WARNING
+     */
     protected void setResponse(TextView placeholder, String message,int responseType){
 
         switch (PlayActivity.responseType.values()[responseType]) {
@@ -169,6 +224,11 @@ public class PlayActivity extends AppCompatActivity {
         placeholder.setText(message);
 
     }
+
+    /**
+     * Store answer in prefrences
+     * @param answer given in input
+     */
     protected void storeAnswer(String answer){
         SharedPreferences.Editor editor = this.getSharedPreferences(this.getPackageName(), MODE_PRIVATE).edit();
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
@@ -176,6 +236,15 @@ public class PlayActivity extends AppCompatActivity {
         solutionsFound.add(answer);
         editor.putStringSet("solutionsFound", solutionsFound).apply();
     }
+
+    /**
+     * Mainly gives an answer to a given input, to a given textview
+     * @param placeholder  where to place the response
+     * @param pointView    place to give overvview of number of points one have
+     * @param answer       Answer given
+     * @param middleChar   Middle char
+     * @param solutions   All possible solutions
+     */
     protected void answer(TextView placeholder,TextView pointView, String answer, String middleChar,List<String> solutions){
 
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
@@ -222,6 +291,9 @@ public class PlayActivity extends AppCompatActivity {
         int nmbWords = sharedPreferences.getInt("nmbWords",0);
         int maxChars = sharedPreferences.getInt("maxChars",0);
 
+
+        //Use default values for difficulty, if not given by the user
+
         if(maxChars == 0){
             Resources res = getResources();
             int defaultMaxChars = res.getInteger(R.integer.defaultMaxChars);
@@ -250,6 +322,7 @@ public class PlayActivity extends AppCompatActivity {
     protected void setup(){
 
         TextView currentSolution=(TextView) findViewById(R.id.currentSolution);
+
         currentSolution.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {}
@@ -257,7 +330,7 @@ public class PlayActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                //Store current solution, when text is changed
                 saveCurrentSolution(currentSolution.getText().toString());
 
             }
@@ -305,20 +378,27 @@ public class PlayActivity extends AppCompatActivity {
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //New random characters surrounding the middle char
                 randomChars(buttonList);
+
+                //Reset view
                 hintText.setText("");
                 SharedPreferences.Editor editor = getSharedPreferences(getPackageName(), MODE_PRIVATE).edit();
                 SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+
                 int nmbWords = sharedPreferences.getInt("nmbWords",0);
                 editor.putInt("points", 0).apply();
                 editor.putStringSet("solutionsFound",new HashSet<String>()).apply();
                 pointView.setText(String.valueOf(0) + " of " + String.valueOf(nmbWords));
                 resetButton.performClick();
 
-                //Se etter løsninge som inneholder knappen i midten, og ignorer ugyldige løsninger som er mindre enn 4
+                //All possbile solutions that contains middle character. Ignore solutions lesser than 4 characters
                 List<String> possibleSuffixes = solutions.stream().filter((x)->x.contains(knapp5.getText()) && x.length() >= minLengthSolution).collect(Collectors.toList());
-                //Ikke løsbar, så lang et nytt spill
-                if(possibleSuffixes.stream().count() < 3)
+
+                //Make sure there exists enough words, to solve it
+                //If not, create a new game
+                if(possibleSuffixes.stream().count() < nmbWords)
                     newGameButton.performClick();
             }
         });

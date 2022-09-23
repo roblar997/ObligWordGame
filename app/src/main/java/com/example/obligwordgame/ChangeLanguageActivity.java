@@ -44,6 +44,7 @@ public class ChangeLanguageActivity extends AppCompatActivity {
         Configuration config = new Configuration();
         config.locale = locale;
 
+        //Language settings is updated
         this.getResources().updateConfiguration(config, this.getResources().getDisplayMetrics());
         setContentView(R.layout.activity_changelanguage);
         setup();
@@ -53,6 +54,7 @@ public class ChangeLanguageActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         String lang = sharedPreferences.getString("lang","no");
 
+        //Make sure switch shows current state
         if(lang.equals("en")){
             switchLanguageLocale.performClick();
         }
@@ -62,10 +64,11 @@ public class ChangeLanguageActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SharedPreferences.Editor editor = getSharedPreferences(getPackageName(), MODE_PRIVATE).edit();
+                //New game when language is changed
                 editor.putInt("points", 0).apply();
                 editor.putStringSet("solutionsFound",new HashSet<String>()).apply();
 
-                //Change between languages
+                //Change between languages, based on state of switch
                 if(!switchLanguageLocale.isChecked()){
 
                     changeLanguage("no");
