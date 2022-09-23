@@ -284,6 +284,13 @@ public class PlayActivity extends AppCompatActivity {
         }
 
     }
+
+    /**
+     *  Load in state of game, based on stored prefrences
+     * @param switchLanguageLocale  Switch used to change language
+     * @param responseText          Where to give the response
+     * @param currentSolutionView   Input where current solution from user is given
+     */
     protected void sharedPreferencesSetup(Switch switchLanguageLocale, TextView responseText, TextView currentSolutionView){
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         String lang = sharedPreferences.getString("lang","no");
@@ -319,6 +326,10 @@ public class PlayActivity extends AppCompatActivity {
         String currentSolution = sharedPreferences.getString("currentSolution","");
         currentSolutionView.setText(currentSolution);
     }
+
+    /**
+     * Add listeners, load state...etc
+     */
     protected void setup(){
 
         TextView currentSolution=(TextView) findViewById(R.id.currentSolution);
