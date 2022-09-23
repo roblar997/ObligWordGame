@@ -35,7 +35,11 @@ public class AllSolutionsActivity extends AppCompatActivity {
                 setContentView(R.layout.activity_allsolutions);
                 LinearLayout solutions =(LinearLayout) findViewById(R.id.viewList);
                 Resources res = getResources();
+
+                //All solutions
                 List<String> solutionsText = Arrays.asList(res.getStringArray(R.array.solutions));
+
+                //Add all solutions to the list, with proper color and all
                 solutionsText.forEach((x)->{
                     TextView text = new TextView(this);
                     text.setText(x.toString());
@@ -47,6 +51,8 @@ public class AllSolutionsActivity extends AppCompatActivity {
                     ));
                     solutions.addView(text);
                 });
+
+                //Menu bar located inside different activites
                 ActionBar actionBar = getSupportActionBar();
                 actionBar.setDisplayHomeAsUpEnabled(true);
 

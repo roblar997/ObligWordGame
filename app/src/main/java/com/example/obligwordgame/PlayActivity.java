@@ -332,27 +332,16 @@ public class PlayActivity extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
                 if(!switchLanguageLocale.isChecked()){
 
-                    String lang = sharedPreferences.getString("lang","no");
 
-                    if(lang.equals("no")){
-                        changeLanguage("en");
+                    changeLanguage("no");
 
-                    }
-                    else{
-                        changeLanguage("no");
-                    }
 
 
                 }
                 else{
 
-                    String lang = sharedPreferences.getString("lang","no");
-                    if(lang.equals("no")){
-                        changeLanguage("en");
-                    }
-                    else{
-                        changeLanguage("no");
-                    }
+                    changeLanguage("en");
+
 
                 }
                 TextView pointView = (TextView) findViewById(R.id.pointView);

@@ -36,6 +36,8 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_changedifficulty);
+
+        //Menu bar inside activites
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -47,6 +49,7 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
         Button nmbWordsKnapp =(Button)findViewById(R.id.nmbWordsKnapp);
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
 
+        //Current difficulty is shown
         int nmbWords = sharedPreferences.getInt("nmbWords",10);
         int maxChars = sharedPreferences.getInt("maxChars",10);
         maxCharsInput.setText(String.valueOf(maxChars));
@@ -69,10 +72,13 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
         maxCharsKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 SharedPreferences.Editor editor = getSharedPreferences(getPackageName(), MODE_PRIVATE).edit();
                 if(maxCharsInput.getText().toString().length() == 0)
                     return;
                 Resources res = getResources();
+
+                //Different responses based on input
                 if(Integer.valueOf(maxCharsInput.getText().toString()) <  4){
                     String response = res.getString(R.string.response1);
 
@@ -83,6 +89,8 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
                 }
                 else
                     feedbackText.setTextColor(Color.parseColor ("#01FF0B"));
+
+                //Maxium number of characters allowed in an answer
                 editor.putInt("maxChars",Integer.parseInt(maxCharsInput.getText().toString())).apply();
 
                 String changeResponse = res.getString(R.string.changeResponseText);
@@ -90,8 +98,7 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
 
                 feedbackText.setText(changeResponse);
 
-                SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-                int nmbWords = sharedPreferences.getInt("nmbWords",0);
+                //New game
                 editor.putInt("points", 0).apply();
                 editor.putStringSet("solutionsFound",new HashSet<String>()).apply();
             }
@@ -100,16 +107,18 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editor = getSharedPreferences(getPackageName(), MODE_PRIVATE).edit();
+
+                //No input
                 if(nmbWordsInput.getText().toString().length() == 0)
                     return;
+
                 editor.putInt("nmbWords",Integer.parseInt(nmbWordsInput.getText().toString())).apply();
                 Resources res = getResources();
                 String changeResponse = res.getString(R.string.changeResponseText);
 
                 feedbackText.setText(changeResponse);
 
-                SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-                int nmbWords = sharedPreferences.getInt("nmbWords",0);
+                //Start a new game
                 editor.putInt("points", 0).apply();
                 editor.putStringSet("solutionsFound",new HashSet<String>()).apply();
             }

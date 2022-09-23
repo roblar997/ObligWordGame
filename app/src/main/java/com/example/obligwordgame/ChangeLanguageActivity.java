@@ -65,29 +65,16 @@ public class ChangeLanguageActivity extends AppCompatActivity {
                 editor.putInt("points", 0).apply();
                 editor.putStringSet("solutionsFound",new HashSet<String>()).apply();
 
+                //Change between languages
                 if(!switchLanguageLocale.isChecked()){
-                    SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-                    String lang = sharedPreferences.getString("lang","no");
 
-                    if(lang.equals("no")){
-                        changeLanguage("en");
-
-                    }
-                    else{
-                        changeLanguage("no");
-                    }
-
+                    changeLanguage("no");
 
                 }
                 else{
-                    SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-                    String lang = sharedPreferences.getString("lang","no");
-                    if(lang.equals("no")){
-                        changeLanguage("en");
-                    }
-                    else{
-                        changeLanguage("no");
-                    }
+
+                    changeLanguage("en");
+
 
                 }
 
