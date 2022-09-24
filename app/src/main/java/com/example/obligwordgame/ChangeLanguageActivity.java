@@ -88,6 +88,20 @@ public class ChangeLanguageActivity extends AppCompatActivity {
         });
     }
     @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        String lang = sharedPreferences.getString("lang","no");
+
+        changeLanguage(lang);
+
+
+
+
+
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_changelanguage);

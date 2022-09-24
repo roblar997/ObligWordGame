@@ -1,15 +1,19 @@
 package com.example.obligwordgame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Locale;
 
 public class RulesActivity extends AppCompatActivity {
 
@@ -19,7 +23,35 @@ public class RulesActivity extends AppCompatActivity {
 
 
     }
+    /**
+     * Change language, and store this in prefrences
+     * @param lang change language to this
+     */
+    protected void changeLanguage(  String lang){
 
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+
+        this.getResources().updateConfiguration(config, this.getResources().getDisplayMetrics());
+        setContentView(R.layout.activity_rulesactivity);
+
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        String lang = sharedPreferences.getString("lang","no");
+
+        changeLanguage(lang);
+
+
+
+
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater(); inflater.inflate(R.menu.menu, menu);

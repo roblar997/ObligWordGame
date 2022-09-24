@@ -17,6 +17,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 public class WordFoundActivity extends AppCompatActivity {
@@ -24,35 +25,68 @@ public class WordFoundActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-
+        setContentView(R.layout.activity_wordsfound);
+        setup();
     }
 
 
+    protected void setup(){
+        setContentView(R.layout.activity_wordsfound);
+        LinearLayout solutions =(LinearLayout) findViewById(R.id.viewList);
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        Set<String> solutionsFound = sharedPreferences.getStringSet("solutionsFound",new HashSet<String>());
+        solutionsFound.forEach((x)->{
+            TextView text = new TextView(this);
+            text.setText(x);
+            text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 34);
+            text.setTextColor(Color.parseColor("#FFFFFF"));
+            text.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT
+            ));
+            solutions.addView(text);
+        });
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
+                 setup();
 
-                setContentView(R.layout.activity_wordsfound);
-                LinearLayout solutions =(LinearLayout) findViewById(R.id.viewList);
-                SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-                Set<String> solutionsFound = sharedPreferences.getStringSet("solutionsFound",new HashSet<String>());
-                solutionsFound.forEach((x)->{
-                    TextView text = new TextView(this);
-                    text.setText(x);
-                    text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 34);
-                    text.setTextColor(Color.parseColor("#FFFFFF"));
-                    text.setLayoutParams(new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.MATCH_PARENT
-                    ));
-                    solutions.addView(text);
-                });
                 ActionBar actionBar = getSupportActionBar();
                 actionBar.setDisplayHomeAsUpEnabled(true);
 
 
     }
+    /**
+     * Change language, and store this in prefrences
+     * @param lang change language to this
+     */
+    protected void changeLanguage(  String lang){
 
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+
+        this.getResources().updateConfiguration(config, this.getResources().getDisplayMetrics());
+        setContentView(R.layout.activity_wordsfound);
+
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        String lang = sharedPreferences.getString("lang","no");
+
+        changeLanguage(lang);
+        setup();
+
+
+
+
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater(); inflater.inflate(R.menu.menu, menu);

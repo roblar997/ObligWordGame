@@ -9,15 +9,46 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashSet;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Change language, and store this in prefrences
+     * @param lang change language to this
+     */
+    protected void changeLanguage(  String lang){
 
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+
+        this.getResources().updateConfiguration(config, this.getResources().getDisplayMetrics());
+        setContentView(R.layout.activity_main);
+        setup();
+
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        String lang = sharedPreferences.getString("lang","no");
+
+        changeLanguage(lang);
+
+
+
+
+
+    }
     protected void setup(){
         Button continueKnapp    =(Button)findViewById(R.id.continueKnapp);
         Button newgameKnapp     =(Button)findViewById(R.id.newgameKnapp);

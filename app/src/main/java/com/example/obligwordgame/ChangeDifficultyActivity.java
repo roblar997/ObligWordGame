@@ -18,6 +18,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashSet;
+import java.util.Locale;
 
 public class ChangeDifficultyActivity extends AppCompatActivity {
 
@@ -31,16 +32,38 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater(); inflater.inflate(R.menu.menu, menu);
         return true;
     }
+    /**
+     * Change language, and store this in prefrences
+     * @param lang change language to this
+     */
+    protected void changeLanguage(  String lang){
 
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+
+        this.getResources().updateConfiguration(config, this.getResources().getDisplayMetrics());
+        setContentView(R.layout.activity_changedifficulty);
+        setup();
+
+    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
         setContentView(R.layout.activity_changedifficulty);
 
-        //Menu bar inside activites
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        String lang = sharedPreferences.getString("lang","no");
 
+        changeLanguage(lang);
+
+        setup();
+
+
+
+    }
+    protected void setup(){
         TextView maxCharsInput = findViewById(R.id.maxCharsInput);
         TextView nmbWordsInput = findViewById(R.id.nmbWordsInput);
         TextView feedbackText = findViewById(R.id.feedbackText);
@@ -123,6 +146,17 @@ public class ChangeDifficultyActivity extends AppCompatActivity {
                 editor.putStringSet("solutionsFound",new HashSet<String>()).apply();
             }
         });
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_changedifficulty);
+
+        //Menu bar inside activites
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        setup();
     }
 
     @Override
