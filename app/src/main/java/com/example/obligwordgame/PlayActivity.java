@@ -161,6 +161,7 @@ public class PlayActivity extends AppCompatActivity {
             if(maxTrieCounter >= maxTries){
                 Button newGameButton =(Button)findViewById(R.id.newGameButton);
                 newGameButton.performClick();
+                return;
             }
 
         }
