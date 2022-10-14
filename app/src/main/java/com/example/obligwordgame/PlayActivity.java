@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
@@ -141,7 +142,38 @@ public class PlayActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         String lang = sharedPreferences.getString("lang","no");
 
+        Set<String> solutionsFound = sharedPreferences.getStringSet("solutionsFound",new HashSet<String>());
+        this.res = getResources();
+        List<String> solutions = Arrays.asList(res.getStringArray(R.array.solutions));
 
+        Button middleChar =(Button)findViewById(R.id.knapp5);
+
+        Random random = new Random();
+        int randomVal = random.nextInt(solutions.size());
+        String randomSolution = solutions.get(randomVal);
+        int maxChars = sharedPreferences.getInt("maxChars",4);
+        int maxTries = 99;
+        int maxTrieCounter = 0;
+        while(solutionsFound.contains(randomSolution) || !randomSolution.contains(middleChar.getText().toString())){
+            randomVal = random.nextInt(solutions.size());
+            randomSolution = solutions.get(randomVal);
+            maxTrieCounter++;
+            if(maxTrieCounter >= maxTries){
+                Button newGameButton =(Button)findViewById(R.id.newGameButton);
+                newGameButton.performClick();
+            }
+
+        }
+
+        Set<String> alphabetSet = new HashSet<>();
+        StringBuilder alphabet = new StringBuilder("");
+        Arrays.stream(randomSolution.split("")).forEach((x)->{
+                    if(!alphabetSet.contains(x)){
+                        alphabetSet.add(x);
+                        alphabet.append(x);
+                    }
+
+        });
         //Random letters to choose from, based on wether one are using
         //Norwegian language or not
         if(!lang.equals("no"))
@@ -149,20 +181,37 @@ public class PlayActivity extends AppCompatActivity {
         else
             gen = new AtomicReference<String>("ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ");
 
-        Random rand = new Random();
+
 
         //Concurrent thing that can access final and atomic things
         //outside foreach loop
         buttonList.forEach((x)->{
-            int randVal = rand.nextInt(gen.get().length());
+            Random rand = new Random();
 
-            //A random cahracter
-            x.setText(String.valueOf(gen.get().charAt(randVal)));
-            //Remove this character as possible candidate
-            gen.set(gen.get().replace(String.valueOf(gen.get().charAt(randVal)),""));
 
-            //Remember this in prefrences
-            editor.putString(String.valueOf(x.getId())+"Text", x.getText().toString()).apply();
+            if( alphabet.length() >0){
+                int randVal = rand.nextInt(alphabet.length());
+                x.setText(String.valueOf(alphabet.toString().charAt(randVal)));
+                //Remove this character as possible candidate
+
+                gen.set(gen.get().replace(String.valueOf(alphabet.toString().charAt(randVal)),""));
+                alphabet.deleteCharAt(randVal);
+                //Remember this in prefrences
+                editor.putString(String.valueOf(x.getId())+"Text", x.getText().toString()).apply();
+
+
+            }
+            else {
+                int randVal = rand.nextInt(gen.get().length());
+                //A random cahracter
+                x.setText(String.valueOf(gen.get().charAt(randVal)));
+                //Remove this character as possible candidate
+                gen.set(gen.get().replace(String.valueOf(gen.get().charAt(randVal)),""));
+
+                //Remember this in prefrences
+                editor.putString(String.valueOf(x.getId())+"Text", x.getText().toString()).apply();
+            }
+
         });
 
         }
@@ -244,6 +293,7 @@ public class PlayActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = this.getSharedPreferences(this.getPackageName(), MODE_PRIVATE).edit();
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         Set<String> solutionsFound = sharedPreferences.getStringSet("solutionsFound",new HashSet<String>());
+
         solutionsFound.add(answer);
         editor.putStringSet("solutionsFound", solutionsFound).apply();
     }
@@ -260,6 +310,7 @@ public class PlayActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         Set<String> solutionsFound = sharedPreferences.getStringSet("solutionsFound",new HashSet<String>());
+
         int maxChars = sharedPreferences.getInt("maxChars",4);
 
         String response1 = res.getString(R.string.response1);
