@@ -147,7 +147,7 @@ public class PlayActivity extends AppCompatActivity {
         List<String> solutions = Arrays.asList(res.getStringArray(R.array.solutions));
 
         Button middleChar =(Button)findViewById(R.id.knapp5);
-
+//
         Random random = new Random();
         int randomVal = random.nextInt(solutions.size());
         String randomSolution = solutions.get(randomVal);
