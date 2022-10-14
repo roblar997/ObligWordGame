@@ -159,9 +159,8 @@ public class PlayActivity extends AppCompatActivity {
             randomSolution = solutions.get(randomVal);
             maxTrieCounter++;
             if(maxTrieCounter >= maxTries){
-                Button newGameButton =(Button)findViewById(R.id.newGameButton);
-                newGameButton.performClick();
-                return;
+
+                break;
             }
 
         }
